@@ -7,8 +7,8 @@ var socketIO = require('socket.io');
 
 var fileServer = new(nodeStatic.Server)();
 var app = http.createServer(function(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
   fileServer.serve(req, res);
-  res.header("Access-Control-Allow-Origin", "*");
 }).listen(process.env.PORT || 8080);
 
 var io = socketIO.listen(app);
