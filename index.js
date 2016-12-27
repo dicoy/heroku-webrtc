@@ -7,7 +7,8 @@ var socketIO = require('socket.io');
 
 var fileServer = new(nodeStatic.Server)();
 var app = http.createServer(function(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  // https://stark-gorge-47735.herokuapp.com/
+  res.setHeader('Access-Control-Allow-Origin', 'http://stark-gorge-47735.herokuapp.com');
   res.setHeader('Access-Control-Request-Method', '*');
   res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
   res.setHeader('Access-Control-Allow-Headers', '*');
