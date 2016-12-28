@@ -92,12 +92,14 @@ socket.on('message', function(message) {
 
 ////////////////////////////////////////////////////
 
-var localVideo = document.querySelector('#localVideo');
-var remoteVideo = document.querySelector('#remoteVideo');
+// var localVideo = document.querySelector('#localVideo');
+// var remoteVideo = document.querySelector('#remoteVideo');
+var localAudio = document.querySelector('#localAudio');
+var remoteAudio = document.querySelector('#remoteAudio');
 
 navigator.mediaDevices.getUserMedia({
-  audio: false,
-  video: true
+  audio: true,
+  video: false
 })
 .then(gotStream)
 .catch(function(e) {
@@ -106,7 +108,8 @@ navigator.mediaDevices.getUserMedia({
 
 function gotStream(stream) {
   console.log('Adding local stream.');
-  localVideo.src = window.URL.createObjectURL(stream);
+  // localVideo.src = window.URL.createObjectURL(stream);
+  localAudio.src = window.URL.createObjectURL(stream);
   localStream = stream;
   sendMessage('got user media');
   if (isInitiator) {
@@ -176,7 +179,8 @@ function handleIceCandidate(event) {
 
 function handleRemoteStreamAdded(event) {
   console.log('Remote stream added.');
-  remoteVideo.src = window.URL.createObjectURL(event.stream);
+  // remoteVideo.src = window.URL.createObjectURL(event.stream);
+  remoteAudio.src = window.URL.createObjectURL(event.stream);
   remoteStream = event.stream;
 }
 
@@ -240,7 +244,8 @@ function requestTurn(turnURL) {
 
 function handleRemoteStreamAdded(event) {
   console.log('Remote stream added.');
-  remoteVideo.src = window.URL.createObjectURL(event.stream);
+  // remoteVideo.src = window.URL.createObjectURL(event.stream);
+  remoteAudio.src = window.URL.createObjectURL(event.stream);
   remoteStream = event.stream;
 }
 
